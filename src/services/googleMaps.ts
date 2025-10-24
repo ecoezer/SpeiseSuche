@@ -1,29 +1,63 @@
 import type { Restaurant, Review } from '../types';
 
 let googleMapsLoaded = false;
+let googleMapsLoadingPromise: Promise<void> | null = null;
 let placesService: google.maps.places.PlacesService | null = null;
 
 export const initializeGoogleMaps = async (): Promise<void> => {
-  if (googleMapsLoaded) return;
+  if (googleMapsLoaded && window.google?.maps) return;
 
-  try {
-    if (!window.google || !window.google.maps) {
+  if (googleMapsLoadingPromise) {
+    return googleMapsLoadingPromise;
+  }
+
+  googleMapsLoadingPromise = (async () => {
+    try {
+      if (window.google?.maps) {
+        googleMapsLoaded = true;
+        return;
+      }
+
+      const existingScript = document.querySelector('script[src*="maps.googleapis.com"]');
+      if (existingScript) {
+        await new Promise<void>((resolve) => {
+          const checkLoaded = setInterval(() => {
+            if (window.google?.maps) {
+              clearInterval(checkLoaded);
+              googleMapsLoaded = true;
+              resolve();
+            }
+          }, 100);
+        });
+        return;
+      }
+
+      const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+      if (!apiKey || apiKey === 'YOUR_GOOGLE_MAPS_API_KEY_HERE') {
+        throw new Error('Google Maps API key not configured. Please add VITE_GOOGLE_MAPS_API_KEY to your .env file.');
+      }
+
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&libraries=places,geometry`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places,geometry`;
       script.async = true;
       script.defer = true;
 
       await new Promise<void>((resolve, reject) => {
-        script.onload = () => resolve();
+        script.onload = () => {
+          googleMapsLoaded = true;
+          resolve();
+        };
         script.onerror = () => reject(new Error('Failed to load Google Maps script'));
         document.head.appendChild(script);
       });
+    } catch (error) {
+      googleMapsLoadingPromise = null;
+      console.error('Error loading Google Maps:', error);
+      throw error;
     }
-    googleMapsLoaded = true;
-  } catch (error) {
-    console.error('Error loading Google Maps:', error);
-    throw new Error('Failed to load Google Maps');
-  }
+  })();
+
+  return googleMapsLoadingPromise;
 };
 
 export const getPlacesService = (map: google.maps.Map): google.maps.places.PlacesService => {

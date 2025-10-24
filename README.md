@@ -36,9 +36,12 @@ Before running this application, you need:
    - Create credentials (API Key)
    - Add the API key to your `.env` file
 
-2. **Firebase Project** (Already configured)
-   - The Firebase credentials are already set up in the `.env` file
-   - Firestore Database is ready to use
+2. **Firebase Project**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project or use an existing one
+   - Enable Firestore Database
+   - Get your Firebase configuration credentials
+   - Add them to your `.env` file
 
 ## Installation
 
@@ -48,7 +51,17 @@ npm install
 ```
 
 2. Configure environment variables:
-   - The `.env` file already contains Firebase credentials
+   - Copy the `.env.example` file to `.env`
+   - Add your Firebase credentials:
+```
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+```
    - Add your Google Maps API key:
 ```
 VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
@@ -183,10 +196,35 @@ The application stores data in three Firestore collections:
 
 ## Troubleshooting
 
-1. **Map not loading**: Check if your Google Maps API key is correctly set in `.env`
-2. **No search results**: Verify that Places API is enabled in your Google Cloud project
-3. **Firebase errors**: Ensure Firestore rules allow read/write operations
-4. **Build errors**: Run `npm install` to ensure all dependencies are installed
+### Google Maps Issues
+
+1. **"InvalidKeyMapError" or "key=undefined"**:
+   - Make sure `VITE_GOOGLE_MAPS_API_KEY` is set in your `.env` file
+   - The key should NOT be `YOUR_GOOGLE_MAPS_API_KEY_HERE`
+   - Restart the dev server after updating `.env` file
+
+2. **"Google Maps JavaScript API multiple times" error**:
+   - This is now fixed - the app prevents duplicate script loading
+   - Clear browser cache if you still see this error
+
+3. **Map not loading**:
+   - Check if your Google Maps API key is correctly set in `.env`
+   - Verify Maps JavaScript API is enabled in Google Cloud Console
+
+4. **No search results**:
+   - Verify that Places API is enabled in your Google Cloud project
+   - Check browser console for specific error messages
+
+### Firebase Issues
+
+1. **Firebase errors**:
+   - Ensure all Firebase environment variables are set correctly
+   - Verify Firestore Database is created and rules allow read/write operations
+   - Check Firebase project ID matches your configuration
+
+2. **Build errors**:
+   - Run `npm install` to ensure all dependencies are installed
+   - Delete `node_modules` and `package-lock.json`, then run `npm install` again
 
 ## License
 
