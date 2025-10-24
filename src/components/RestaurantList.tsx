@@ -20,28 +20,26 @@ export const RestaurantList: React.FC = () => {
 
   if (filteredResults.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-full bg-white px-8">
-        <div className="bg-gray-100 p-10 rounded-full mb-6">
-          <FaSearch className="text-7xl text-gray-400" />
+      <div className="flex flex-col items-center justify-center py-20 bg-transparent px-8">
+        <div className="mb-6">
+          <FaSearch className="text-8xl text-gray-400" />
         </div>
-        <p className="text-xl font-bold text-gray-900 mb-3">Keine Restaurants gefunden</p>
-        <p className="text-base text-center text-gray-600 max-w-sm leading-relaxed">
-          Versuchen Sie eine andere Postleitzahl oder erweitern Sie den Suchradius
+        <p className="text-2xl font-bold text-gray-900 mb-3">Keine Restaurants gefunden</p>
+        <p className="text-base text-center text-gray-600 max-w-md leading-relaxed">
+          Versuchen Sie eine andere Postleitzahl oder<br />erweitern Sie den Suchradius
         </p>
       </div>
     );
   }
 
   return (
-    <div className="h-full overflow-y-auto custom-scrollbar bg-white">
-      <div className="sticky top-0 bg-white z-10 px-6 py-4 border-b border-gray-200">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base font-bold text-gray-900">
-            {filteredResults.length} {filteredResults.length === 1 ? 'Restaurant' : 'Restaurants'}
-          </h2>
-        </div>
+    <div className="space-y-4">
+      <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-200">
+        <h2 className="text-base font-bold text-gray-900">
+          {filteredResults.length} {filteredResults.length === 1 ? 'Restaurant' : 'Restaurants'} gefunden
+        </h2>
       </div>
-      <div>
+      <div className="space-y-3">
         {filteredResults.map((restaurant) => (
           <RestaurantCard key={restaurant.placeId} restaurant={restaurant} />
         ))}

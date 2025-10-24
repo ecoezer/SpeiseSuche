@@ -28,36 +28,36 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) =>
 
   return (
     <div
-      className="px-4 py-4 hover:bg-gray-50 cursor-pointer border-b border-gray-200 transition-all duration-200 group"
+      className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:shadow-md cursor-pointer transition-all duration-200 group"
       onClick={handleCardClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="flex items-start gap-3">
         <div className="flex-1 min-w-0">
-          <h3 className="font-medium text-base text-gray-900 mb-2 line-clamp-1 group-hover:text-[#ff8000] transition-colors">
+          <h3 className="font-semibold text-base text-gray-900 mb-2 line-clamp-1 group-hover:text-[#ff8500] transition-colors">
             {restaurant.name}
           </h3>
 
           <div className="flex items-center gap-2 mb-2 flex-wrap">
             {restaurant.rating && (
-              <div className="flex items-center gap-1 bg-white px-2 py-1 rounded shadow-sm border border-gray-200">
+              <div className="flex items-center gap-1 bg-gray-50 px-2.5 py-1 rounded-lg">
                 <FaStar className="text-[#ffc107]" size={12} />
-                <span className="text-xs font-medium text-gray-900">{restaurant.rating}</span>
+                <span className="text-sm font-semibold text-gray-900">{restaurant.rating}</span>
                 {restaurant.reviewCount && (
-                  <span className="text-xs text-gray-500">({restaurant.reviewCount})</span>
+                  <span className="text-sm text-gray-500">({restaurant.reviewCount})</span>
                 )}
               </div>
             )}
 
             {restaurant.distance !== undefined && (
-              <span className="text-xs font-medium text-gray-600">
+              <span className="text-sm font-medium text-gray-600">
                 {restaurant.distance} km
               </span>
             )}
 
             {restaurant.isOpen !== undefined && (
-              <span className={`text-xs font-medium ${
+              <span className={`text-sm font-medium ${
                 restaurant.isOpen
                   ? 'text-green-600'
                   : 'text-red-600'
@@ -67,12 +67,12 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) =>
             )}
           </div>
 
-          <p className="text-xs text-gray-500 line-clamp-1 mb-2">{restaurant.address}</p>
+          <p className="text-sm text-gray-500 line-clamp-1 mb-2">{restaurant.address}</p>
 
           {restaurant.phone && (
             <a
               href={`tel:${restaurant.phone}`}
-              className="text-xs text-[#ff8000] hover:text-[#ff6600] font-medium inline-flex items-center gap-1"
+              className="text-sm text-[#ff8500] hover:text-[#ff6600] font-medium inline-flex items-center gap-1"
               onClick={(e) => e.stopPropagation()}
             >
               {restaurant.phone}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaSearch, FaTimes } from 'react-icons/fa';
+import { FaTimes, FaMapMarkerAlt } from 'react-icons/fa';
 import { useAppContext } from '../context/AppContext';
 import {
   geocodePostalCode,
@@ -111,38 +111,37 @@ export const SearchForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto space-y-6">
-      <form onSubmit={handleSearch} className="space-y-6">
+    <div className="relative bg-gradient-to-br from-[#ff8500] to-[#ffa03f] rounded-2xl shadow-lg p-6">
+      <button
+        type="button"
+        onClick={handleClear}
+        className="absolute top-4 right-4 text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+      >
+        <FaTimes size={20} />
+      </button>
+
+      <form onSubmit={handleSearch} className="space-y-5">
         <div>
-          <label htmlFor="postalCode" className="block mb-2 text-sm font-medium text-white">
+          <label htmlFor="postalCode" className="block mb-3 text-base font-medium text-white">
             Postleitzahl eingeben
           </label>
           <div className="relative">
-            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+            <FaMapMarkerAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
             <input
               type="text"
               id="postalCode"
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
-              placeholder="z.B. 10115"
+              placeholder="10115"
               maxLength={5}
-              className="w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 transition-all shadow-sm"
+              className="w-full pl-12 pr-4 py-3.5 border-0 rounded-xl text-base focus:ring-2 focus:ring-orange-300 transition-all shadow-sm font-medium text-gray-700"
             />
-            {postalCode && (
-              <button
-                type="button"
-                onClick={handleClear}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <FaTimes size={18} />
-              </button>
-            )}
           </div>
         </div>
 
         <div>
-          <div className="flex justify-between items-center mb-2">
-            <label htmlFor="radius" className="text-sm font-medium text-white">
+          <div className="mb-3">
+            <label htmlFor="radius" className="text-base font-medium text-white">
               Umkreis: {searchRadius} km
             </label>
           </div>
@@ -159,9 +158,8 @@ export const SearchForm: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full bg-white hover:bg-gray-50 text-[#ff8000] font-medium text-base px-5 py-3.5 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 border border-gray-200"
+          className="w-full bg-[#f5ebe0] hover:bg-[#eddcc8] text-gray-800 font-semibold text-base px-5 py-4 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
         >
-          <FaSearch size={16} />
           Restaurants finden
         </button>
       </form>
