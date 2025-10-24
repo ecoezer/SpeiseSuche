@@ -111,10 +111,10 @@ export const SearchForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl p-8 mb-8 border border-slate-200/50">
+    <div className="bg-white/80 backdrop-blur-md shadow-lg rounded-2xl p-8 mb-8 border border-slate-200/60">
       <form onSubmit={handleSearch} className="space-y-6">
         <div>
-          <label htmlFor="postalCode" className="block text-sm font-semibold text-slate-700 mb-3">
+          <label htmlFor="postalCode" className="block text-sm font-semibold text-slate-800 mb-3">
             Postleitzahl
           </label>
           <input
@@ -124,16 +124,16 @@ export const SearchForm: React.FC = () => {
             onChange={(e) => setPostalCode(e.target.value)}
             placeholder="z.B. 10115"
             maxLength={5}
-            className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-300 text-lg font-medium bg-slate-50/50"
+            className="w-full px-5 py-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all duration-200 text-base font-medium bg-white hover:border-slate-400"
           />
         </div>
 
         <div>
           <div className="flex justify-between items-center mb-3">
-            <label htmlFor="radius" className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="radius" className="block text-sm font-semibold text-slate-800">
               Suchradius
             </label>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+            <span className="text-lg font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">
               {searchRadius} km
             </span>
           </div>
@@ -144,7 +144,7 @@ export const SearchForm: React.FC = () => {
             max="50"
             value={searchRadius}
             onChange={(e) => setSearchRadius(Number(e.target.value))}
-            className="w-full h-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full appearance-none cursor-pointer accent-blue-600 slider"
+            className="w-full h-2 rounded-full appearance-none cursor-pointer slider"
           />
           <div className="flex justify-between text-xs text-slate-500 mt-2 font-medium">
             <span>1 km</span>
@@ -155,17 +155,17 @@ export const SearchForm: React.FC = () => {
         <div className="flex gap-4 pt-2">
           <button
             type="submit"
-            className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105 transform"
+            className="flex-1 bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg hover:-translate-y-0.5"
           >
-            <FaSearch className="text-lg" />
+            <FaSearch className="text-base" />
             Suchen
           </button>
           <button
             type="button"
             onClick={handleClear}
-            className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 transform"
+            className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 hover:-translate-y-0.5"
           >
-            <FaTimes className="text-lg" />
+            <FaTimes className="text-base" />
             Löschen
           </button>
         </div>

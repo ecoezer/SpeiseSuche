@@ -10,11 +10,11 @@ export const RestaurantList: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center h-full">
         <div className="relative">
-          <div className="animate-spin rounded-full h-20 w-20 border-b-4 border-t-4 border-blue-600"></div>
-          <div className="absolute top-0 left-0 w-20 h-20 rounded-full border-4 border-blue-200 animate-pulse"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-t-4 border-indigo-500"></div>
+          <div className="absolute top-0 left-0 w-16 h-16 rounded-full border-4 border-indigo-100 animate-pulse"></div>
         </div>
-        <p className="text-slate-700 font-semibold mt-6 text-lg">Suche nach Restaurants...</p>
-        <p className="text-slate-500 text-sm mt-2">Bitte warten Sie einen Moment</p>
+        <p className="text-slate-800 font-semibold mt-6 text-base">Suche nach Restaurants...</p>
+        <p className="text-slate-500 text-sm mt-1">Bitte warten Sie einen Moment</p>
       </div>
     );
   }
@@ -22,10 +22,10 @@ export const RestaurantList: React.FC = () => {
   if (filteredResults.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-full text-slate-500">
-        <div className="bg-gradient-to-br from-slate-100 to-blue-100 p-8 rounded-3xl mb-6">
-          <FaSearch className="text-7xl text-slate-400" />
+        <div className="bg-gradient-to-br from-slate-100 to-indigo-100 p-8 rounded-2xl mb-6">
+          <FaSearch className="text-6xl text-slate-400" />
         </div>
-        <p className="text-2xl font-bold mb-3 text-slate-700">Keine Restaurants gefunden</p>
+        <p className="text-xl font-bold mb-2 text-slate-800">Keine Restaurants gefunden</p>
         <p className="text-sm text-center text-slate-600 max-w-md leading-relaxed">
           Geben Sie eine Postleitzahl ein, um Restaurants in Ihrer Nähe zu finden
         </p>
@@ -35,12 +35,12 @@ export const RestaurantList: React.FC = () => {
 
   return (
     <div className="h-full overflow-y-auto custom-scrollbar">
-      <div className="mb-6 sticky top-0 bg-white/95 backdrop-blur-lg z-10 py-4 border-b-2 border-blue-500 rounded-t-2xl">
+      <div className="mb-4 sticky top-0 bg-white/95 backdrop-blur-lg z-10 py-3 border-b border-slate-200">
         <div className="flex items-center justify-between">
-          <p className="text-base font-bold text-slate-800">
+          <p className="text-sm font-semibold text-slate-800">
             {filteredResults.length} Restaurant{filteredResults.length !== 1 ? 's' : ''} gefunden
           </p>
-          <div className="bg-blue-100 text-blue-700 px-4 py-2 rounded-xl font-bold text-sm">
+          <div className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg font-semibold text-sm">
             {filteredResults.length}
           </div>
         </div>
