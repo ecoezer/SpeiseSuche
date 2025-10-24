@@ -11,7 +11,7 @@ import {
   saveSearch,
   saveRestaurant,
   linkSearchToRestaurant
-} from '../services/firebase';
+} from '../services/supabase';
 
 export const SearchForm: React.FC = () => {
   const {
