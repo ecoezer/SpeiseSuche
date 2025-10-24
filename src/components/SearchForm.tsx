@@ -111,22 +111,22 @@ export const SearchForm: React.FC = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-[#ff8500] to-[#ffa03f] rounded-2xl shadow-lg p-6">
+    <div className="relative bg-gradient-to-br from-[#ec9641] to-[#f7af62] rounded-xl shadow-md p-5">
       <button
         type="button"
         onClick={handleClear}
-        className="absolute top-4 right-4 text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+        className="absolute top-4 right-4 text-gray-800 hover:text-gray-900 transition-colors"
       >
         <FaTimes size={20} />
       </button>
 
-      <form onSubmit={handleSearch} className="space-y-5">
+      <form onSubmit={handleSearch} className="space-y-4">
         <div>
-          <label htmlFor="postalCode" className="block mb-3 text-base font-medium text-white">
+          <label htmlFor="postalCode" className="block mb-2.5 text-base font-medium text-white">
             Postleitzahl eingeben
           </label>
           <div className="relative">
-            <FaMapMarkerAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+            <FaMapMarkerAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={17} />
             <input
               type="text"
               id="postalCode"
@@ -134,14 +134,14 @@ export const SearchForm: React.FC = () => {
               onChange={(e) => setPostalCode(e.target.value)}
               placeholder="10115"
               maxLength={5}
-              className="w-full pl-12 pr-4 py-3.5 border-0 rounded-xl text-base focus:ring-2 focus:ring-orange-300 transition-all shadow-sm font-medium text-gray-700"
+              className="w-full pl-12 pr-4 py-3 border-0 rounded-lg text-base focus:ring-2 focus:ring-orange-300 transition-all shadow-sm font-normal text-gray-700"
             />
           </div>
         </div>
 
-        <div>
-          <div className="mb-3">
-            <label htmlFor="radius" className="text-base font-medium text-white">
+        <div className="bg-white rounded-lg p-4">
+          <div className="mb-2">
+            <label htmlFor="radius" className="text-base font-normal text-gray-800">
               Umkreis: {searchRadius} km
             </label>
           </div>
@@ -152,13 +152,13 @@ export const SearchForm: React.FC = () => {
             max="50"
             value={searchRadius}
             onChange={(e) => setSearchRadius(Number(e.target.value))}
-            className="w-full appearance-none cursor-pointer slider h-2"
+            className="w-full appearance-none cursor-pointer slider-white h-2"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full bg-[#f5ebe0] hover:bg-[#eddcc8] text-gray-800 font-semibold text-base px-5 py-4 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
+          className="w-full bg-[#fef4e8] hover:bg-[#fdefd6] text-gray-800 font-semibold text-base px-5 py-3.5 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
         >
           Restaurants finden
         </button>

@@ -23,39 +23,31 @@ export const FilterToolbar: React.FC = () => {
       <div className="flex items-center gap-3 flex-wrap">
         <button
           onClick={handleOpenToggle}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all border ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all border ${
             filters.onlyOpen
               ? 'bg-gray-800 text-white border-gray-800 shadow-sm'
-              : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
+              : 'bg-[#f5f5f5] text-gray-700 border-transparent hover:bg-gray-200'
           }`}
         >
-          <span className="text-lg">☀️</span>
+          <span className="text-base">☀️</span>
           Geöffnet
         </button>
 
-        <button
-          onClick={() => handleRatingChange(filters.minRating > 0 ? 0 : 4)}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all border ${
-            filters.minRating > 0
-              ? 'bg-gray-800 text-white border-gray-800 shadow-sm'
-              : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
-          }`}
-        >
-          <span className="text-lg">⚡</span>
-          Top bewertet
-        </button>
-
-        <select
-          id="sortBy"
-          value={filters.sortBy}
-          onChange={(e) => handleSortChange(e.target.value as any)}
-          className="ml-auto px-4 py-2.5 rounded-lg text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:border-gray-400 focus:ring-2 focus:ring-gray-300 outline-none cursor-pointer transition-all"
-        >
-          <option value="distance">Sortieren: Entfernung</option>
-          <option value="rating">Sortieren: Bewertung</option>
-          <option value="reviewCount">Sortieren: Anzahl Bewertungen</option>
-          <option value="name">Sortieren: Name (A-Z)</option>
-        </select>
+        <div className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium bg-gray-800 text-white border border-gray-800 shadow-sm">
+          <span className="text-base">⚡</span>
+          <span>Top bewertet</span>
+          <select
+            id="sortBy"
+            value={filters.sortBy}
+            onChange={(e) => handleSortChange(e.target.value as any)}
+            className="bg-transparent border-none text-white outline-none cursor-pointer font-medium text-sm appearance-none pr-5 bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 20 20%27%3e%3cpath d=%27M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%27/%3e%3c/svg%3e')] bg-no-repeat bg-right"
+          >
+            <option value="distance">Entfernung</option>
+            <option value="rating">Bewertung</option>
+            <option value="reviewCount">Anzahl Bewertungen</option>
+            <option value="name">Name (A-Z)</option>
+          </select>
+        </div>
       </div>
 
       {filters.minRating > 0 && (

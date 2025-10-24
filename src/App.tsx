@@ -10,17 +10,13 @@ const AppContent: React.FC = () => {
   const { error, setError } = useAppContext();
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: '#faf8f5' }}>
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-5">
-          <h1 className="text-3xl font-bold text-[#ff8500]">
+    <div className="min-h-screen flex flex-col" style={{ background: '#ffffff' }}>
+      <main className="flex-1 py-6 px-4">
+        <div className="max-w-xl mx-auto space-y-5">
+          <h1 className="text-3xl font-bold text-[#f7912e] mb-5">
             Restaurant Finder
           </h1>
-        </div>
-      </header>
 
-      <main className="flex-1 py-8 px-6">
-        <div className="max-w-2xl mx-auto space-y-6">
           <SearchForm />
 
           {error && (
