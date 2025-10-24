@@ -111,10 +111,10 @@ export const SearchForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-      <form onSubmit={handleSearch} className="space-y-4">
+    <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl p-8 mb-8 border border-slate-200/50">
+      <form onSubmit={handleSearch} className="space-y-6">
         <div>
-          <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="postalCode" className="block text-sm font-semibold text-slate-700 mb-3">
             Postleitzahl
           </label>
           <input
@@ -124,14 +124,19 @@ export const SearchForm: React.FC = () => {
             onChange={(e) => setPostalCode(e.target.value)}
             placeholder="z.B. 10115"
             maxLength={5}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-300 text-lg font-medium bg-slate-50/50"
           />
         </div>
 
         <div>
-          <label htmlFor="radius" className="block text-sm font-medium text-gray-700 mb-2">
-            Umkreis: {searchRadius} km
-          </label>
+          <div className="flex justify-between items-center mb-3">
+            <label htmlFor="radius" className="block text-sm font-semibold text-slate-700">
+              Suchradius
+            </label>
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+              {searchRadius} km
+            </span>
+          </div>
           <input
             type="range"
             id="radius"
@@ -139,28 +144,28 @@ export const SearchForm: React.FC = () => {
             max="50"
             value={searchRadius}
             onChange={(e) => setSearchRadius(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+            className="w-full h-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full appearance-none cursor-pointer accent-blue-600 slider"
           />
-          <div className="flex justify-between text-xs text-gray-500 mt-1">
+          <div className="flex justify-between text-xs text-slate-500 mt-2 font-medium">
             <span>1 km</span>
             <span>50 km</span>
           </div>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex gap-4 pt-2">
           <button
             type="submit"
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 flex items-center justify-center gap-2"
+            className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105 transform"
           >
-            <FaSearch />
+            <FaSearch className="text-lg" />
             Suchen
           </button>
           <button
             type="button"
             onClick={handleClear}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 flex items-center justify-center gap-2"
+            className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 transform"
           >
-            <FaTimes />
+            <FaTimes className="text-lg" />
             Löschen
           </button>
         </div>

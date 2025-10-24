@@ -28,13 +28,15 @@ export const FilterToolbar: React.FC = () => {
   const hasActiveFilters = filters.minRating > 0 || filters.onlyOpen || filters.sortBy !== 'distance';
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 mb-4">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <FaFilter className="text-gray-600" />
-          <h3 className="font-semibold text-gray-800">Filter & Sortierung</h3>
+    <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl p-6 mb-8 border border-slate-200/50">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-2.5 rounded-xl">
+            <FaFilter className="text-white text-sm" />
+          </div>
+          <h3 className="font-bold text-slate-800 text-lg">Filter & Sortierung</h3>
           {hasActiveFilters && (
-            <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full">
+            <span className="bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-200">
               Aktiv
             </span>
           )}
@@ -42,7 +44,7 @@ export const FilterToolbar: React.FC = () => {
         {hasActiveFilters && (
           <button
             onClick={clearFilters}
-            className="text-sm text-red-600 hover:text-red-700 flex items-center gap-1"
+            className="text-sm text-red-600 hover:text-red-700 font-semibold flex items-center gap-2 hover:scale-105 transition-all duration-300 bg-red-50 px-4 py-2 rounded-xl"
           >
             <FaTimes />
             Zurücksetzen
@@ -50,43 +52,43 @@ export const FilterToolbar: React.FC = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-slate-700 mb-3">
             Mindestbewertung
           </label>
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             {[1, 2, 3, 4, 5].map((rating) => (
               <button
                 key={rating}
                 onClick={() => handleRatingChange(filters.minRating === rating ? 0 : rating)}
-                className={`p-2 rounded transition-colors ${
+                className={`p-3 rounded-xl transition-all duration-300 transform hover:scale-110 ${
                   filters.minRating >= rating
-                    ? 'text-yellow-500'
-                    : 'text-gray-300 hover:text-gray-400'
+                    ? 'text-yellow-500 bg-yellow-50 shadow-lg scale-110'
+                    : 'text-slate-300 hover:text-slate-400 hover:bg-slate-50'
                 }`}
               >
-                <FaStar size={20} />
+                <FaStar size={22} />
               </button>
             ))}
           </div>
           {filters.minRating > 0 && (
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-slate-600 mt-2 font-medium">
               Mindestens {filters.minRating} Stern{filters.minRating !== 1 ? 'e' : ''}
             </p>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-slate-700 mb-3">
             Status
           </label>
           <button
             onClick={handleOpenToggle}
-            className={`w-full px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`w-full px-5 py-3.5 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg ${
               filters.onlyOpen
-                ? 'bg-green-600 text-white hover:bg-green-700'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                ? 'bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
             }`}
           >
             {filters.onlyOpen ? 'Nur geöffnete' : 'Alle anzeigen'}
@@ -94,13 +96,13 @@ export const FilterToolbar: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-slate-700 mb-3">
             Sortieren nach
           </label>
           <select
             value={filters.sortBy}
             onChange={(e) => handleSortChange(e.target.value as any)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            className="w-full px-5 py-3.5 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none bg-slate-50/50 font-medium transition-all duration-300"
           >
             <option value="distance">Entfernung</option>
             <option value="rating">Bewertung</option>
