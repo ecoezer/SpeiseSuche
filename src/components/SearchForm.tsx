@@ -111,14 +111,14 @@ export const SearchForm: React.FC = () => {
   };
 
   return (
-    <div className="space-y-5">
-      <form onSubmit={handleSearch} className="space-y-5">
+    <div className="space-y-4">
+      <form onSubmit={handleSearch} className="space-y-4">
         <div>
-          <label htmlFor="postalCode" className="block text-sm font-semibold text-gray-700 mb-2">
-            Postleitzahl
+          <label htmlFor="postalCode" className="block text-sm font-semibold text-white mb-2">
+            Postleitzahl eingeben
           </label>
           <div className="relative">
-            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <input
               type="text"
               id="postalCode"
@@ -126,15 +126,15 @@ export const SearchForm: React.FC = () => {
               onChange={(e) => setPostalCode(e.target.value)}
               placeholder="z.B. 10115"
               maxLength={5}
-              className="w-full pl-11 pr-11 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium transition-all shadow-sm hover:border-gray-400"
+              className="w-full pl-12 pr-11 py-4 border-2 border-transparent rounded-lg focus:outline-none focus:border-white text-base font-medium transition-all shadow-lg"
             />
             {postalCode && (
               <button
                 type="button"
                 onClick={handleClear}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 hover:bg-gray-100 rounded-full transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1.5 hover:bg-gray-100 rounded-full transition-colors"
               >
-                <FaTimes size={14} />
+                <FaTimes size={16} />
               </button>
             )}
           </div>
@@ -142,12 +142,9 @@ export const SearchForm: React.FC = () => {
 
         <div>
           <div className="flex justify-between items-center mb-3">
-            <label htmlFor="radius" className="text-sm font-semibold text-gray-700">
-              Suchradius
+            <label htmlFor="radius" className="text-sm font-semibold text-white">
+              Umkreis: {searchRadius} km
             </label>
-            <span className="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-              {searchRadius} km
-            </span>
           </div>
           <input
             type="range"
@@ -162,10 +159,10 @@ export const SearchForm: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
+          className="w-full bg-white hover:bg-gray-50 text-[#ff8000] font-bold py-4 px-4 rounded-lg transition-all duration-200 text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
         >
-          <FaSearch size={14} />
-          Restaurant suchen
+          <FaSearch size={16} />
+          Restaurants finden
         </button>
       </form>
     </div>
