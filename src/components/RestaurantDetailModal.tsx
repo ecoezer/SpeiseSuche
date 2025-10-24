@@ -38,13 +38,13 @@ export const RestaurantDetailModal: React.FC = () => {
       onClick={handleBackdropClick}
     >
       <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-in slide-in-from-bottom duration-500 custom-scrollbar">
-        <div className="sticky top-0 bg-[#ff8000] p-5 flex justify-between items-center z-10">
-          <h2 className="text-xl font-bold text-white">{selectedRestaurant.name}</h2>
+        <div className="sticky top-0 bg-[#ff8000] p-4 flex justify-between items-center z-10">
+          <h2 className="text-lg font-medium text-white">{selectedRestaurant.name}</h2>
           <button
             onClick={handleClose}
             className="text-white hover:bg-white/20 transition-all duration-200 p-2 rounded-lg"
           >
-            <FaTimes size={20} />
+            <FaTimes size={18} />
           </button>
         </div>
 
@@ -61,7 +61,7 @@ export const RestaurantDetailModal: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
             <div className="space-y-4 bg-gray-50 p-5 rounded-xl">
-              <h3 className="text-base font-bold text-gray-900 border-b-2 border-[#ff8000] pb-2">Kontaktinformationen</h3>
+              <h3 className="text-sm font-medium text-gray-900 border-b border-[#ff8000] pb-2">Kontaktinformationen</h3>
 
               <div className="flex items-start gap-3 text-gray-700">
                 <div className="bg-[#ff8000] p-2 rounded-lg">
@@ -137,7 +137,7 @@ export const RestaurantDetailModal: React.FC = () => {
             </div>
 
             <div className="space-y-4 bg-gray-50 p-5 rounded-xl">
-              <h3 className="text-base font-bold text-gray-900 border-b-2 border-[#ff8000] pb-2">Bewertung & Status</h3>
+              <h3 className="text-sm font-medium text-gray-900 border-b border-[#ff8000] pb-2">Bewertung & Status</h3>
 
               {selectedRestaurant.rating && (
                 <div className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-200">
@@ -176,7 +176,7 @@ export const RestaurantDetailModal: React.FC = () => {
 
           {selectedRestaurant.openingHours?.weekdayText && (
             <div className="mb-6 bg-gray-50 p-5 rounded-xl">
-              <h3 className="text-base font-bold text-gray-900 border-b-2 border-[#ff8000] pb-2 mb-4">Öffnungszeiten</h3>
+              <h3 className="text-sm font-medium text-gray-900 border-b border-[#ff8000] pb-2 mb-3">Öffnungszeiten</h3>
               <div className="grid grid-cols-1 gap-2">
                 {selectedRestaurant.openingHours.weekdayText.map((day, index) => (
                   <div key={index} className="text-sm text-gray-700 bg-white p-3 rounded-lg">
@@ -189,7 +189,7 @@ export const RestaurantDetailModal: React.FC = () => {
 
           {selectedRestaurant.reviews && selectedRestaurant.reviews.length > 0 && (
             <div className="mb-6">
-              <h3 className="text-base font-bold text-gray-900 border-b-2 border-[#ff8000] pb-2 mb-4">Bewertungen</h3>
+              <h3 className="text-sm font-medium text-gray-900 border-b border-[#ff8000] pb-2 mb-3">Bewertungen</h3>
               <div className="space-y-3">
                 {selectedRestaurant.reviews.slice(0, 3).map((review, index) => (
                   <div key={index} className="bg-gray-50 p-4 rounded-lg">
@@ -214,7 +214,7 @@ export const RestaurantDetailModal: React.FC = () => {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 bg-[#ff8000] hover:bg-[#ff6600] text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 text-sm"
+              className="flex-1 bg-[#ff8000] hover:bg-[#ff6600] text-white font-medium py-2.5 px-5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 text-sm"
             >
               <FaExternalLinkAlt size={14} />
               Google Maps
@@ -223,7 +223,7 @@ export const RestaurantDetailModal: React.FC = () => {
               href={`https://www.google.com/maps/dir/?api=1&destination=${selectedRestaurant.coordinates.lat},${selectedRestaurant.coordinates.lng}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 bg-[#ff8000] hover:bg-[#ff6600] text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 text-sm"
+              className="flex-1 bg-[#ff8000] hover:bg-[#ff6600] text-white font-medium py-2.5 px-5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 text-sm"
             >
               <FaDirections size={14} />
               Route

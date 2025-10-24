@@ -114,11 +114,11 @@ export const SearchForm: React.FC = () => {
     <div className="max-w-xl mx-auto space-y-6">
       <form onSubmit={handleSearch} className="space-y-6">
         <div>
-          <label htmlFor="postalCode" className="block text-base font-semibold text-white mb-3">
+          <label htmlFor="postalCode" className="block mb-2 text-sm font-medium text-white">
             Postleitzahl eingeben
           </label>
           <div className="relative">
-            <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
             <input
               type="text"
               id="postalCode"
@@ -126,7 +126,7 @@ export const SearchForm: React.FC = () => {
               onChange={(e) => setPostalCode(e.target.value)}
               placeholder="z.B. 10115"
               maxLength={5}
-              className="w-full pl-14 pr-14 py-5 border-2 border-transparent rounded-xl focus:outline-none focus:border-white text-lg font-medium transition-all shadow-lg"
+              className="w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 transition-all shadow-sm"
             />
             {postalCode && (
               <button
@@ -141,8 +141,8 @@ export const SearchForm: React.FC = () => {
         </div>
 
         <div>
-          <div className="flex justify-between items-center mb-4">
-            <label htmlFor="radius" className="text-base font-semibold text-white">
+          <div className="flex justify-between items-center mb-2">
+            <label htmlFor="radius" className="text-sm font-medium text-white">
               Umkreis: {searchRadius} km
             </label>
           </div>
@@ -159,9 +159,9 @@ export const SearchForm: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full bg-white hover:bg-gray-50 text-[#ff8000] font-bold py-5 px-6 rounded-xl transition-all duration-200 text-lg shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+          className="w-full bg-white hover:bg-gray-50 text-[#ff8000] font-medium text-base px-5 py-3.5 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 border border-gray-200"
         >
-          <FaSearch size={18} />
+          <FaSearch size={16} />
           Restaurants finden
         </button>
       </form>
