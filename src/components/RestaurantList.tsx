@@ -9,10 +9,11 @@ export const RestaurantList: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center h-full bg-white px-4">
-        <div className="relative mb-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-3 border-t-3 border-blue-600"></div>
+        <div className="relative mb-6">
+          <div className="animate-spin rounded-full h-14 w-14 border-4 border-blue-200 border-t-blue-600"></div>
         </div>
-        <p className="text-gray-700 font-medium text-sm">Suche läuft...</p>
+        <p className="text-gray-700 font-semibold text-base">Suche läuft...</p>
+        <p className="text-gray-500 text-sm mt-1">Restaurants werden geladen</p>
       </div>
     );
   }
@@ -20,9 +21,11 @@ export const RestaurantList: React.FC = () => {
   if (filteredResults.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-full bg-white px-6">
-        <FaSearch className="text-4xl text-gray-300 mb-3" />
-        <p className="text-sm font-medium text-gray-700 mb-1">Keine Ergebnisse</p>
-        <p className="text-xs text-center text-gray-500 max-w-xs">
+        <div className="bg-gray-100 p-6 rounded-full mb-4">
+          <FaSearch className="text-5xl text-gray-400" />
+        </div>
+        <p className="text-base font-bold text-gray-900 mb-2">Keine Restaurants gefunden</p>
+        <p className="text-sm text-center text-gray-600 max-w-xs leading-relaxed">
           Versuchen Sie eine andere Postleitzahl oder erweitern Sie den Suchradius
         </p>
       </div>
@@ -31,13 +34,13 @@ export const RestaurantList: React.FC = () => {
 
   return (
     <div className="h-full overflow-y-auto custom-scrollbar bg-white">
-      <div className="sticky top-0 bg-white z-10 px-4 py-3 border-b border-gray-200">
+      <div className="sticky top-0 bg-white/95 backdrop-blur-sm z-10 px-6 py-4 border-b border-gray-200 shadow-sm">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-900">
-            Ergebnisse
+          <h2 className="text-sm font-bold text-gray-900">
+            Restaurants
           </h2>
-          <span className="text-xs text-gray-500">
-            {filteredResults.length} {filteredResults.length === 1 ? 'Restaurant' : 'Restaurants'}
+          <span className="text-xs font-semibold text-white bg-blue-600 px-3 py-1 rounded-full">
+            {filteredResults.length}
           </span>
         </div>
       </div>
